@@ -1,47 +1,134 @@
-## Getting Started
+# NFT Collection Smart Contract
 
-Create a project using this example:
+This project implements an ERC721-based NFT collection smart contract with additional features like token nicknaming and role-based permissions. Built using ThirdWeb's contract framework and Hardhat development environment.
+
+## Features
+
+- ERC721 standard implementation for NFT collection
+- Role-based access control for administrative functions
+- Token nickname functionality
+- Royalty support for secondary sales
+- Built on ThirdWeb's contract framework
+- ZKSync network support
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- Yarn or npm package manager
+- Basic understanding of Solidity and smart contracts
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-npx thirdweb create --contract --template hardhat-javascript-starter
+git clone <repository-url>
+cd NFT-Collection-01-Contract
 ```
 
-You can start editing the page by modifying `contracts/Contract.sol`.
-
-To add functionality to your contracts, you can use the `@thirdweb-dev/contracts` package which provides base contracts and extensions to inherit. The package is already installed with this project. Head to our [Contracts Extensions Docs](https://portal.thirdweb.com/contractkit) to learn more.
-
-## Building the project
-
-After any changes to the contract, run:
+2. Install dependencies:
 
 ```bash
-npm run build
+yarn install
 # or
+npm install
+```
+
+## Project Structure
+
+```
+├── contracts/
+│   └── collectionOne.sol    # Main NFT collection contract
+├── hardhat.config.js        # Hardhat configuration
+├── package.json            # Project dependencies and scripts
+└── README.md               # Project documentation
+```
+
+## Contract Features
+
+### Main Contract: collectionOne.sol
+
+- Inherits from ThirdWeb's `ERC721Base` and `PermissionsEnumerable`
+- Implements role-based access control
+- Supports token nicknaming functionality
+- Includes royalty support for secondary sales
+
+### Roles
+
+- `DEFAULT_ADMIN_ROLE`: Administrative access
+- `NICKNAMER_ROLE`: Permission to update token nicknames
+
+## Development
+
+### Building the Project
+
+To compile the smart contracts:
+
+```bash
 yarn build
+# or
+npm run build
 ```
 
-to compile your contracts. This will also detect the [Contracts Extensions Docs](https://portal.thirdweb.com/contractkit) detected on your contract.
+### Deploying Contracts
 
-## Deploying Contracts
-
-When you're ready to deploy your contracts, just run one of the following command to deploy you're contracts:
+To deploy the contracts to your chosen network:
 
 ```bash
-npm run deploy
-# or
 yarn deploy
+# or
+npm run deploy
 ```
 
-## Releasing Contracts
+### Releasing Contracts
 
-If you want to release a version of your contracts publicly, you can use one of the followings command:
+To release a version of your contracts publicly:
 
 ```bash
-npm run release
-# or
 yarn release
+# or
+npm run release
 ```
 
-## Join our Discord!
+## Contract Usage
 
-For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
+### Setting Up the Contract
+
+When deploying, you'll need to provide:
+
+- Collection name
+- Collection symbol
+- Royalty recipient address
+- Royalty basis points (bps)
+
+### Managing Tokens
+
+1. **Minting NFTs**: Use the standard ERC721 minting functions
+2. **Updating Nicknames**: Only users with the `NICKNAMER_ROLE` can update token nicknames
+3. **Managing Roles**: Use the role management functions from `PermissionsEnumerable`
+
+## Network Support
+
+This project is configured to work with:
+
+- ZKSync network
+- Other EVM-compatible networks
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
+
+## Support
+
+For questions and support:
+
+- Join the ThirdWeb Discord: [https://discord.gg/thirdweb](https://discord.gg/thirdweb)
+- Open an issue in the repository
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
